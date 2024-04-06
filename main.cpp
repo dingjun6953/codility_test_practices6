@@ -49,14 +49,10 @@ int primenumber(int number)
 {
     int i;
     // Condition for checking the
-    // given number is prime or
-    // not
+    // given number is prime or not
     for (i = 2; i <= number / 2; i++)
     {
-        if (number % i != 0)
-            continue;
-        else
-            return 1;
+        if (number % i == 0)   return 1;
     }
     return 0; //prime number when returning 0
 }
@@ -69,35 +65,26 @@ vector<int> solution(int N, vector<int> &P, vector<int> &Q) {
     for(int m=0; m<size; m++){
         result[m]=0;
     }
-    int count;
+    
     int temp;
     for (int i=0; i<Q.size();i++)
     {
         if(P[i]<4) P[i]=4;
-
         for (int j=P[i]; j<=Q[i];j++){
             if(primenumber(j)!=0){
-
             for (int k=2; k<j; k++){
                 temp=j/k;
                 if(primenumber(temp)==0 && primenumber(k)==0 && j==temp*k){
                         cout<<"j="<<j<<endl;
                         result[i]++;
                         break;
-
                 }
             }
-
-
             }
-
         }
     }
-
     return result;
 }
-
-
 
 int main()
 {
@@ -107,7 +94,5 @@ int main()
     for(int i=0;i<result.size();i++){
          cout<<result[i]<<" ";
     }
-
-    //cout << "Hello world!" << endl;
     return 0;
 }
